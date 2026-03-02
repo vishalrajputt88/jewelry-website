@@ -1,151 +1,90 @@
-{% assign custom_announsebar = section.id | replace: '_', '' | downcase %}
+{% assign sid = section.id | replace: '_', '' | downcase %}
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+.jw-annbar-{{ sid }} {
+  background: {{ section.settings.background_color }};
+  width: 100%; overflow: hidden;
+}
+.jw-annbar-inner-{{ sid }} {
+  display: flex; align-items: center; justify-content: center;
+  max-width: 100%; overflow: hidden;
+  position: relative;
+}
+.jw-annbar-track-{{ sid }} {
+  display: flex; align-items: center;
+  white-space: nowrap;
+  animation: jwAnnScroll{{ sid }} 28s linear infinite;
+}
+.jw-annbar-track-{{ sid }}:hover { animation-play-state: paused; }
+@keyframes jwAnnScroll{{ sid }} {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.jw-ann-item-{{ sid }} {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 9px 36px;
+  font-family: 'Jost', sans-serif;
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: {{ section.settings.text_color }};
+  white-space: nowrap;
+}
+.jw-ann-dot-{{ sid }} {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: {{ section.settings.accent_color }};
+  flex-shrink: 0;
+}
+</style>
 
-{% style %}
-  .announcement-bar-{{ custom_announsebar }} {
-    display: block;
-    width: 100%;
-    background-color: {{ section.settings.background_color }};
-    padding: 0;
-    margin: 0;
-  }
-
-  .announcement-bar-container-{{ custom_announsebar }} {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1460px;
-    padding: 12px 20px;
-    gap: 20px;
-    margin: 0 auto;
-  }
-
-  .announcement-bar-text-{{ custom_announsebar }} {
-    color: {{ section.settings.text_color }};
-    font-size: 14px;
-    font-weight: 600;
-    margin: 0;
-    flex: 1;
-  }
-
-  .announcement-bar-links-{{ custom_announsebar }} {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    flex-shrink: 0;
-  }
-
-  .announcement-bar-link-{{ custom_announsebar }} {
-    color: {{ section.settings.link_color }};
-    text-decoration: none;
-    font-size: 14px;
-    white-space: nowrap;
-  }
-
-  .announcement-bar-link-{{ custom_announsebar }}:hover {
-    opacity: 0.8;
-  }
-
-  @media screen and (max-width: 749px) {
-  .announcement-bar-links-{{ custom_announsebar }} {
- display: none;
-  }
-
-    .announcement-bar-container-{{ custom_announsebar }} {
-      flex-direction: column;
-      gap: 10px;
-      padding: 10px 15px;
-      text-align: center;
-    }
-
-    .announcement-bar-text-{{ custom_announsebar }} {
-      font-size: 12px;
-    }
-
-    .announcement-bar-links-{{ custom_announsebar }} {
-      gap: 15px;
-    }
-
-    .announcement-bar-link-{{ custom_announsebar }} {
-      font-size: 12px;
-    }
-  }
-{% endstyle %}
-
-<announcement-bar-{{ custom_announsebar }} class="announcement-bar-{{ custom_announsebar }}" {{ section.shopify_attributes }}>
-  <div class="announcement-bar-container-{{ custom_announsebar }}">
-    <div class="announcement-bar-text-{{ custom_announsebar }}">
-      {{ section.settings.announcement_text }}
-    </div>
-    <div class="announcement-bar-links-{{ custom_announsebar }}">
-      {% if section.settings.menu != blank %}
-        {% for link in section.settings.menu.links %}
-          <a href="{{ link.url }}" class="announcement-bar-link-{{ custom_announsebar }}">
-            {{ link.title }}
-          </a>
-        {% endfor %}
-      {% endif %}
+<div class="jw-annbar-{{ sid }}" {{ section.shopify_attributes }}>
+  <div class="jw-annbar-inner-{{ sid }}">
+    <div class="jw-annbar-track-{{ sid }}">
+      {%- assign msgs = section.settings.messages | split: '|' -%}
+      {%- for i in (1..2) -%}
+        {%- for msg in msgs -%}
+          <span class="jw-ann-item-{{ sid }}">
+            <span class="jw-ann-dot-{{ sid }}"></span>
+            {{ msg | strip }}
+            <span class="jw-ann-dot-{{ sid }}"></span>
+          </span>
+        {%- endfor -%}
+      {%- endfor -%}
     </div>
   </div>
-</announcement-bar-{{ custom_announsebar }}>
-
-<script>
-  (function() {
-    class AnnouncementBar{{ custom_announsebar }} extends HTMLElement {
-      constructor() {
-        super();
-      }
-    }
-    customElements.define('announcement-bar-{{ custom_announsebar }}', AnnouncementBar{{ custom_announsebar }});
-  })();
-</script>
+</div>
 
 {% schema %}
 {
-  "name": "Announcement bar",
+  "name": "Announcement Bar",
   "settings": [
     {
-      "type": "header",
-      "content": "Content"
-    },
-    {
-      "type": "text",
-      "id": "announcement_text",
-      "label": "Announcement text",
-      "default": "Get Up to 40% OFF On Bulk Purchasing | Use Code 'SAVE10' For Instant 10% Discount"
-    },
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "Menu",
-      "default": "main-menu"
-    },
-    {
-      "type": "header",
-      "content": "Colors"
+      "type": "textarea",
+      "id": "messages",
+      "label": "Messages (separate with |)",
+      "default": "Free Shipping on Orders Above ₹2,999 | BIS Hallmarked Gold Jewellery | IGI Certified Diamonds | 30-Day Easy Returns | EMI Available | Lifetime Polishing Free"
     },
     {
       "type": "color",
       "id": "background_color",
       "label": "Background",
-      "default": "#16a34a"
+      "default": "#1a1a1a"
     },
     {
       "type": "color",
       "id": "text_color",
-      "label": "Text",
-      "default": "#ffffff"
+      "label": "Text Color",
+      "default": "#d4b896"
     },
     {
       "type": "color",
-      "id": "link_color",
-      "label": "Links",
-      "default": "#ffffff"
+      "id": "accent_color",
+      "label": "Dot Accent",
+      "default": "#b89b6a"
     }
   ],
   "presets": [
     {
-      "name": "Announcement bar"
+      "name": "Announcement Bar"
     }
   ]
 }

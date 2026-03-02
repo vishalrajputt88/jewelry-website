@@ -1,281 +1,117 @@
-{% assign featured_counter = section.id | replace: '_', '' | downcase %}
+{% assign sid = section.id | replace: '_', '' | downcase %}
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+.jw-counter-{{ sid }} {
+  background: {{ section.settings.background_color }};
+  padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  border-top: 1px solid rgba(184,155,106,0.2);
+  border-bottom: 1px solid rgba(184,155,106,0.2);
+}
+.jw-counter-inner-{{ sid }} {
+  max-width: 1440px; margin: 0 auto; padding: 0 28px;
+  display: grid; grid-template-columns: repeat(4,1fr); gap: 0;
+}
+.jw-ctr-item-{{ sid }} {
+  text-align: center; padding: 36px 20px;
+  border-right: 1px solid rgba(184,155,106,0.2);
+  position: relative;
+}
+.jw-ctr-item-{{ sid }}:last-child { border-right: none; }
+.jw-ctr-num-{{ sid }} {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 300; font-style: italic;
+  line-height: 1; letter-spacing: 0.02em;
+  margin-bottom: 8px;
+}
+.jw-ctr-label-{{ sid }} {
+  font-family: 'Jost', sans-serif;
+  font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: {{ section.settings.counter_label_color }};
+}
+.jw-ctr-line-{{ sid }} {
+  width: 24px; height: 1px; background: #b89b6a;
+  margin: 10px auto 0;
+}
+@media(max-width:768px) { .jw-counter-inner-{{ sid }} { grid-template-columns: repeat(2,1fr); } .jw-ctr-item-{{ sid }}:nth-child(2) { border-right: none; } .jw-ctr-item-{{ sid }}:nth-child(3),.jw-ctr-item-{{ sid }}:nth-child(4) { border-top: 1px solid rgba(184,155,106,0.2); } }
+@media(max-width:480px) { .jw-counter-inner-{{ sid }} { grid-template-columns: 1fr; } .jw-ctr-item-{{ sid }} { border-right: none !important; border-top: 1px solid rgba(184,155,106,0.2) !important; } .jw-ctr-item-{{ sid }}:first-child { border-top: none !important; } }
+</style>
 
-{% style %}
-  .stats-counter-{{ featured_counter }} {
-    display: block;
-    width: 100%;
-    background-color: {{ section.settings.background_color }};
-    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
-    margin-bottom: 70px;
-  }
-
-  .stats-counter-container-{{ featured_counter }} {
-    display: grid;
-    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
-    gap: 20px;
-    max-width: 1219px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  .stats-counter-item-{{ featured_counter }} {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .stats-counter-number-{{ featured_counter }} {
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 1.2;
-    margin: 0;
-    display: inline-block;
-  }
-
-  .stats-counter-label-{{ featured_counter }} {
-    font-size: 24px;
-    color: {{ section.settings.counter_label_color }};
-    margin-top: 6px;
-    line-height: 1.4;
-  }
-
-  @media screen and (max-width: 989px) {
-    .stats-counter-container-{{ featured_counter }} {
-      grid-template-columns: repeat({{ section.settings.columns_tablet }}, 1fr);
-      gap: 30px 20px;
-    }
-  }
-
-  @media screen and (max-width: 749px) {
-    .stats-counter-container-{{ featured_counter }} {
-      {% if section.settings.columns_mobile == '1' %}
-        grid-template-columns: 1fr;
-      {% else %}
-        grid-template-columns: repeat(2, 1fr);
+<section class="jw-counter-{{ sid }}" {{ section.shopify_attributes }}>
+  <div class="jw-counter-inner-{{ sid }}">
+    {% for i in (1..4) %}
+      {% assign num_key   = 'counter_' | append: i | append: '_number' %}
+      {% assign plus_key  = 'counter_' | append: i | append: '_plus' %}
+      {% assign label_key = 'counter_' | append: i | append: '_label' %}
+      {% assign color_key = 'counter_' | append: i | append: '_number_color' %}
+      {% if section.settings[label_key] != blank %}
+        <div class="jw-ctr-item-{{ sid }}">
+          <div class="jw-ctr-num-{{ sid }}" style="color:{{ section.settings[color_key] }}" data-target="{{ section.settings[num_key] }}" data-plus="{{ section.settings[plus_key] }}">0</div>
+          <div class="jw-ctr-label-{{ sid }}">{{ section.settings[label_key] }}</div>
+          <div class="jw-ctr-line-{{ sid }}"></div>
+        </div>
       {% endif %}
-      gap: 30px;
-    }
-
-    .stats-counter-number-{{ featured_counter }} {
-      font-size: 28px;
-    }
-  }
-{% endstyle %}
-<section {{ section.shopify_attributes }}>
-<stats-counter-{{ featured_counter }} class="stats-counter-{{ featured_counter }}" >
-  <div class="stats-counter-container-{{ featured_counter }}">
-    {% if section.settings.counter_1_number != blank %}
-      <div class="stats-counter-item-{{ featured_counter }}">
-        <div
-          class="stats-counter-number-{{ featured_counter }}"
-          data-target="{{ section.settings.counter_1_number }}"
-          data-plus="{{ section.settings.counter_1_plus }}"
-          style="color: {{ section.settings.counter_1_number_color }};"
-        >
-          0
-        </div>
-        <div class="stats-counter-label-{{ featured_counter }}">
-          {{ section.settings.counter_1_label }}
-        </div>
-      </div>
-    {% endif %}
-
-    {% if section.settings.counter_2_number != blank %}
-      <div class="stats-counter-item-{{ featured_counter }}">
-        <div
-          class="stats-counter-number-{{ featured_counter }}"
-          data-target="{{ section.settings.counter_2_number }}"
-          data-plus="{{ section.settings.counter_2_plus }}"
-          style="color: {{ section.settings.counter_2_number_color }};"
-        >
-          0
-        </div>
-        <div class="stats-counter-label-{{ featured_counter }}" >
-          {{ section.settings.counter_2_label }}
-        </div>
-      </div>
-    {% endif %}
-
-    {% if section.settings.counter_3_number != blank %}
-      <div class="stats-counter-item-{{ featured_counter }}">
-        <div
-          class="stats-counter-number-{{ featured_counter }}"
-          data-target="{{ section.settings.counter_3_number }}"
-          data-plus="{{ section.settings.counter_3_plus }}"
-          style="color: {{ section.settings.counter_3_number_color }};"
-        >
-          0
-        </div>
-        <div class="stats-counter-label-{{ featured_counter }}" >
-          {{ section.settings.counter_3_label }}
-        </div>
-      </div>
-    {% endif %}
-
-    {% if section.settings.counter_4_number != blank %}
-      <div class="stats-counter-item-{{ featured_counter }}">
-        <div
-          class="stats-counter-number-{{ featured_counter }}"
-          data-target="{{ section.settings.counter_4_number }}"
-          data-plus="{{ section.settings.counter_4_plus }}"
-          style="color: {{ section.settings.counter_4_number_color }};"
-        >
-          0
-        </div>
-        <div class="stats-counter-label-{{ featured_counter }}" >
-          {{ section.settings.counter_4_label }}
-        </div>
-      </div>
-    {% endif %}
+    {% endfor %}
   </div>
-</stats-counter-{{ featured_counter }}>
 </section>
+
 <script>
-  (function() {
-    class StatsCounter extends HTMLElement {
-      constructor() {
-        super();
-        this.animated = false;
-      }
-
-      connectedCallback() {
-        this.setupObserver();
-      }
-
-      setupObserver() {
-        const options = {
-          root: null,
-          threshold: 0.3,
-          rootMargin: '0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && !this.animated) {
-              this.animated = true;
-              this.animateCounters();
-              observer.unobserve(this);
-            }
-          });
-        }, options);
-
-        observer.observe(this);
-      }
-
-      animateCounters() {
-        const counters = this.querySelectorAll('.stats-counter-number-{{ featured_counter }}');
-        const duration = 2000;
-
-        counters.forEach((counter) => {
-          const target = parseInt(counter.getAttribute('data-target'));
-          const hasPlus = counter.getAttribute('data-plus') === 'true';
-          const startTime = performance.now();
-
-          const updateCounter = (currentTime) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-
-            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-            const current = Math.floor(easeOutQuart * target);
-
-            counter.textContent = current.toLocaleString();
-
-            if (progress < 1) {
-              requestAnimationFrame(updateCounter);
-            } else {
-              counter.textContent = target.toLocaleString() + (hasPlus ? '+' : '');
-            }
-          };
-
-          requestAnimationFrame(updateCounter);
-        });
-      }
-    }
-
-    customElements.define('stats-counter-{{ featured_counter }}', StatsCounter);
-  })();
+(function() {
+  var nums = document.querySelectorAll('#shopify-section-{{ section.id }} [data-target]');
+  function animateCount(el) {
+    var target = parseInt(el.dataset.target.replace(/,/g,''), 10);
+    var plus = el.dataset.plus === 'true';
+    var dur = 1800; var steps = 60; var step = 0;
+    var t = setInterval(function() {
+      step++;
+      var val = Math.round(target * (step / steps));
+      el.textContent = val.toLocaleString('en-IN') + (plus && step === steps ? '+' : '');
+      if (step >= steps) { clearInterval(t); el.textContent = target.toLocaleString('en-IN') + (plus ? '+' : ''); }
+    }, dur / steps);
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) { animateCount(e.target); obs.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  nums.forEach(function(n) { obs.observe(n); });
+})();
 </script>
 
 {% schema %}
 {
-  "name": "Animated stats counter",
-  "tag": "section",
+  "name": "Stats Counter",
   "settings": [
-    {
-      "type": "header",
-      "content": "Layout"
-    },
-    {
-      "type": "range",
-      "id": "columns_desktop",
-      "label": "Columns on desktop",
-      "min": 1,
-      "max": 4,
-      "step": 1,
-      "default": 4
-    },
-    {
-      "type": "range",
-      "id": "columns_tablet",
-      "label": "Columns on tablet",
-      "min": 1,
-      "max": 4,
-      "step": 1,
-      "default": 2
-    },
-    {
-      "type": "select",
-      "id": "columns_mobile",
-      "label": "Columns on mobile",
-      "options": [
-        {
-          "value": "1",
-          "label": "1"
-        },
-        {
-          "value": "2",
-          "label": "2"
-        }
-      ],
-      "default": "1"
-    },
-    {
-      "type": "header",
-      "content": "Section style"
-    },
     {
       "type": "color",
       "id": "background_color",
-      "label": "Background color",
-      "default": "#cfd8cc"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "label": "Top padding",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "px",
-      "default": 40
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "label": "Bottom padding",
-      "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "px",
-      "default": 40
+      "label": "Background",
+      "default": "#1a1a1a"
     },
     {
       "type": "color",
       "id": "counter_label_color",
-      "label": "Label color",
-      "default": "#000"
+      "label": "Label Color",
+      "default": "#a8998a"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "default": 48,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "default": 48,
+      "unit": "px"
     },
     {
       "type": "header",
@@ -284,28 +120,27 @@
     {
       "type": "text",
       "id": "counter_1_number",
-      "label": "Target number",
-      "default": "201"
+      "label": "Number",
+      "default": "25000"
     },
     {
       "type": "checkbox",
       "id": "counter_1_plus",
-      "label": "Enable plus sign",
+      "label": "Show + sign",
       "default": true
     },
     {
       "type": "text",
       "id": "counter_1_label",
-      "label": "Label text",
-      "default": "Happy Farmers"
+      "label": "Label",
+      "default": "Happy Customers"
     },
     {
       "type": "color",
       "id": "counter_1_number_color",
-      "label": "Number color",
-      "default": "#2e8b57"
+      "label": "Number Color",
+      "default": "#b89b6a"
     },
-    
     {
       "type": "header",
       "content": "Counter 2"
@@ -313,28 +148,27 @@
     {
       "type": "text",
       "id": "counter_2_number",
-      "label": "Target number",
-      "default": "250"
+      "label": "Number",
+      "default": "500"
     },
     {
       "type": "checkbox",
       "id": "counter_2_plus",
-      "label": "Enable plus sign",
+      "label": "Show + sign",
       "default": true
     },
     {
       "type": "text",
       "id": "counter_2_label",
-      "label": "Label text",
-      "default": "Best Products"
+      "label": "Label",
+      "default": "Unique Designs"
     },
     {
       "type": "color",
       "id": "counter_2_number_color",
-      "label": "Number color",
-      "default": "#2e8b57"
+      "label": "Number Color",
+      "default": "#d4b896"
     },
-    
     {
       "type": "header",
       "content": "Counter 3"
@@ -342,28 +176,27 @@
     {
       "type": "text",
       "id": "counter_3_number",
-      "label": "Target number",
-      "default": "24000"
+      "label": "Number",
+      "default": "15"
     },
     {
       "type": "checkbox",
       "id": "counter_3_plus",
-      "label": "Enable plus sign",
-      "default": true
+      "label": "Show + sign",
+      "default": false
     },
     {
       "type": "text",
       "id": "counter_3_label",
-      "label": "Label text",
-      "default": "Pincodes Delivery"
+      "label": "Label",
+      "default": "Years of Craftsmanship"
     },
     {
       "type": "color",
       "id": "counter_3_number_color",
-      "label": "Number color",
-      "default": "#2e8b57"
+      "label": "Number Color",
+      "default": "#b89b6a"
     },
-    
     {
       "type": "header",
       "content": "Counter 4"
@@ -371,32 +204,31 @@
     {
       "type": "text",
       "id": "counter_4_number",
-      "label": "Target number",
+      "label": "Number",
       "default": "100"
     },
     {
       "type": "checkbox",
       "id": "counter_4_plus",
-      "label": "Enable plus sign",
+      "label": "Show + sign",
       "default": false
     },
     {
       "type": "text",
       "id": "counter_4_label",
-      "label": "Label text",
-      "default": "Quality Assured"
+      "label": "Label",
+      "default": "Certified Quality"
     },
     {
       "type": "color",
       "id": "counter_4_number_color",
-      "label": "Number color",
-      "default": "#2e8b57"
+      "label": "Number Color",
+      "default": "#d4b896"
     }
-    
   ],
   "presets": [
     {
-      "name": "Animated stats counter"
+      "name": "Stats Counter"
     }
   ]
 }

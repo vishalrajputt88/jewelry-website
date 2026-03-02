@@ -1,155 +1,261 @@
-{% assign custom_promotional_banner = section.id | replace: '_', '' | downcase %}
+{% assign sid = section.id | replace: '_', '' | downcase %}
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+.jw-promo-{{ sid }} {
+  background: {{ section.settings.background_color }};
+  padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+}
+.jw-promo-inner-{{ sid }} {
+  max-width: 1440px; margin: 0 auto; padding: 0 28px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+.jw-promo-card-{{ sid }} {
+  position: relative; overflow: hidden;
+  aspect-ratio: {{ section.settings.aspect_ratio }};
+  display: block; text-decoration: none;
+  border: 1px solid #e8e0d5;
+}
+.jw-promo-card-{{ sid }} img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s ease; display: block;
+}
+.jw-promo-card-{{ sid }}:hover img { transform: scale(1.04); }
+.jw-promo-overlay-{{ sid }} {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(20,12,5,0.68) 0%, transparent 55%);
+  transition: opacity 0.3s;
+}
+.jw-promo-card-{{ sid }}:hover .jw-promo-overlay-{{ sid }} { opacity: 0.9; }
+.jw-promo-text-{{ sid }} {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 24px 22px;
+}
+.jw-promo-eyebrow-{{ sid }} {
+  font-family: 'Jost', sans-serif; font-size: 9px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: #b89b6a;
+  margin-bottom: 5px;
+}
+.jw-promo-title-{{ sid }} {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 300; font-style: italic; color: #fff;
+  line-height: 1.2; margin-bottom: 8px;
+}
+.jw-promo-cta-{{ sid }} {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: 'Jost', sans-serif; font-size: 9.5px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: #d4b896;
+  border-bottom: 1px solid rgba(184,155,106,0.5); padding-bottom: 1px;
+}
+.jw-promo-cta-{{ sid }} svg { width: 11px; height: 11px; stroke: #d4b896; fill: none; stroke-width: 2; transition: transform 0.2s; }
+.jw-promo-card-{{ sid }}:hover .jw-promo-cta-{{ sid }} svg { transform: translateX(3px); }
+@media(max-width:640px) { .jw-promo-inner-{{ sid }} { grid-template-columns: 1fr; } }
+</style>
 
-{% style %}
-  .promo-banners-{{ custom_promotional_banner }} {
-    display: block;
-    width: 100%;
-    background-color: {{ section.settings.background_color }};
-    padding-top: {{ section.settings.padding_top }}px;
-    padding-bottom: {{ section.settings.padding_bottom }}px;
-  }
+{% assign cards = '' | split: '' %}
+{% assign i = 1 %}
+{% for n in (1..4) %}
+  {% assign img_key   = 'image_' | append: n %}
+  {% assign title_key = 'title_' | append: n %}
+  {% assign eyeb_key  = 'eyebrow_' | append: n %}
+  {% assign link_key  = 'link_' | append: n %}
+  {% assign cta_key   = 'cta_' | append: n %}
+  {% if section.settings[img_key] != blank %}
+    {% assign cards = cards | push: n %}
+  {% endif %}
+{% endfor %}
 
-  .promo-banners-grid-{{ custom_promotional_banner }} {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    max-width: 1349px;
-    margin: 0 auto;
-    gap: 23px;
-  }
-
-  .promo-banner-item-{{ custom_promotional_banner }} {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-  }
-
-  .promo-banner-item-{{ custom_promotional_banner }} img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .promo-banner-placeholder-{{ custom_promotional_banner }} {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    background-color: #f4f4f4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .promo-banner-placeholder-{{ custom_promotional_banner }} svg {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  @media screen and (max-width: 989px) {
-   
-    .promo-banners-grid-{{ custom_promotional_banner }} {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media screen and (max-width: 749px) {
-     .promo-banners-{{ custom_promotional_banner }} { padding: 0px 20px; }
-    .promo-banners-grid-{{ custom_promotional_banner }} {
-      gap: 10px;
-    }
-  }
-{% endstyle %}
-
-<div class="promo-banners-{{ custom_promotional_banner }}" {{ section.shopify_attributes }}>
-  <div class="promo-banners-grid-{{ custom_promotional_banner }}">
-    {% for i in (1..4) %}
-      {% liquid
-        assign image_key = 'image_' | append: i
-        assign image = section.settings[image_key]
-      %}
-      
-      <div class="promo-banner-item-{{ custom_promotional_banner }}">
-        {% if image %}
-          <img
-            src="{{ image | image_url: width: 1000 }}"
-            alt="{{ image.alt | escape }}"
-            loading="lazy"
-            width="{{ image.width }}"
-            height="{{ image.height }}"
-          >
-        {% else %}
-          <div class="promo-banner-placeholder-{{ custom_promotional_banner }}">
-            {{ 'image' | placeholder_svg_tag }}
+<section class="jw-promo-{{ sid }}" {{ section.shopify_attributes }}>
+  <div class="jw-promo-inner-{{ sid }}">
+    {% for n in cards %}
+      {% assign img_key   = 'image_' | append: n %}
+      {% assign title_key = 'title_' | append: n %}
+      {% assign eyeb_key  = 'eyebrow_' | append: n %}
+      {% assign link_key  = 'link_' | append: n %}
+      {% assign cta_key   = 'cta_' | append: n %}
+      <a href="{{ section.settings[link_key] | default: '#' }}" class="jw-promo-card-{{ sid }}">
+        <img src="{{ section.settings[img_key] | image_url: width: 900 }}" alt="{{ section.settings[title_key] }}" loading="lazy">
+        <div class="jw-promo-overlay-{{ sid }}"></div>
+        {% if section.settings[title_key] != blank or section.settings[cta_key] != blank %}
+          <div class="jw-promo-text-{{ sid }}">
+            {% if section.settings[eyeb_key] != blank %}
+              <div class="jw-promo-eyebrow-{{ sid }}">{{ section.settings[eyeb_key] }}</div>
+            {% endif %}
+            {% if section.settings[title_key] != blank %}
+              <div class="jw-promo-title-{{ sid }}">{{ section.settings[title_key] }}</div>
+            {% endif %}
+            {% if section.settings[cta_key] != blank %}
+              <span class="jw-promo-cta-{{ sid }}">
+                {{ section.settings[cta_key] }}
+                <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+            {% endif %}
           </div>
         {% endif %}
-      </div>
+      </a>
     {% endfor %}
   </div>
-</div>
+</section>
 
 {% schema %}
 {
-  "name": "Promotional banners",
+  "name": "Promotional Banners",
   "settings": [
-    {
-      "type": "header",
-      "content": "Images"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_1",
-      "label": "Image 1"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_2",
-      "label": "Image 2"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_3",
-      "label": "Image 3"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_4",
-      "label": "Image 4"
-    },
-    {
-      "type": "header",
-      "content": "Section settings"
-    },
     {
       "type": "color",
       "id": "background_color",
-      "label": "Background color",
-      "default": "#ffffff"
+      "label": "Background",
+      "default": "#faf8f5"
     },
     {
       "type": "range",
       "id": "padding_top",
+      "label": "Padding Top",
       "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "px",
-      "label": "Padding top",
+      "max": 80,
+      "step": 4,
       "default": 0
     },
     {
       "type": "range",
       "id": "padding_bottom",
+      "label": "Padding Bottom",
       "min": 0,
-      "max": 100,
-      "step": 5,
-      "unit": "px",
-      "label": "Padding bottom",
+      "max": 80,
+      "step": 4,
       "default": 0
+    },
+    {
+      "type": "text",
+      "id": "aspect_ratio",
+      "label": "Aspect Ratio",
+      "default": "4/3"
+    },
+    {
+      "type": "header",
+      "content": "Banner 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_1",
+      "label": "Eyebrow",
+      "default": "New Arrivals"
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Title",
+      "default": "Bridal Collection"
+    },
+    {
+      "type": "text",
+      "id": "cta_1",
+      "label": "CTA Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "link_1",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Banner 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_2",
+      "label": "Eyebrow",
+      "default": "Exclusive"
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Title",
+      "default": "Diamond Jewellery"
+    },
+    {
+      "type": "text",
+      "id": "cta_2",
+      "label": "CTA Text",
+      "default": "Explore"
+    },
+    {
+      "type": "url",
+      "id": "link_2",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Banner 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_3",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "cta_3",
+      "label": "CTA Text"
+    },
+    {
+      "type": "url",
+      "id": "link_3",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Banner 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_4",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "title_4",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "cta_4",
+      "label": "CTA Text"
+    },
+    {
+      "type": "url",
+      "id": "link_4",
+      "label": "Link"
     }
   ],
   "presets": [
     {
-      "name": "Promotional banners"
+      "name": "Promotional Banners"
     }
   ]
 }

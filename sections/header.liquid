@@ -1118,6 +1118,123 @@
   </script>
 {% endunless %}
 
+
+{%- comment -%} JEWELRY THEME HEADER OVERRIDE {%- endcomment -%}
+<style>
+  /* ── JEWELRY HEADER: INK DARK BACKGROUND ── */
+  .header-section,
+  .header-section #header-component,
+  #header-component {
+    --color-background: #1a1a1a !important;
+    background-color: #1a1a1a !important;
+  }
+
+  /* All text in header = gold/cream */
+  #header-component,
+  #header-component a,
+  #header-component button,
+  #header-component span:not(.cart-bubble__count) {
+    color: #c8b898 !important;
+  }
+
+  /* Logo text */
+  #header-component .header__logo,
+  #header-component .header__logo a,
+  #header-component [class*="logo"] {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-style: italic !important;
+    font-weight: 300 !important;
+    color: #d4b896 !important;
+    letter-spacing: 0.06em !important;
+  }
+
+  /* Nav links */
+  #header-component overflow-list a,
+  #header-component .header__nav-item a,
+  #header-component [data-menu-style] a {
+    font-family: 'Jost', sans-serif !important;
+    font-size: 11.5px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: #c8b898 !important;
+  }
+  #header-component overflow-list a:hover,
+  #header-component .header__nav-item a:hover {
+    color: #b89b6a !important;
+  }
+
+  /* Icons (SVG strokes) */
+  #header-component svg {
+    stroke: #c8b898 !important;
+    fill: none !important;
+  }
+  #header-component button:hover svg,
+  #header-component a:hover svg {
+    stroke: #b89b6a !important;
+  }
+
+  /* Cart count bubble */
+  #header-component .cart-bubble,
+  #header-component [ref="cartBubble"],
+  #header-component [data-count] {
+    background: #b89b6a !important;
+    color: #fff !important;
+  }
+
+  /* Bottom border */
+  #header-component {
+    border-bottom: 1px solid rgba(184,155,106,0.2) !important;
+  }
+
+  /* Sticky header */
+  #header-component[sticky="always"],
+  .header-section:has(#header-component[sticky]) {
+    background: rgba(20,12,5,0.96) !important;
+    backdrop-filter: blur(16px) !important;
+  }
+
+  /* Drawer menu (mobile) */
+  .header-drawer,
+  menu-drawer,
+  [class*="drawer"] {
+    background: #1a1a1a !important;
+  }
+  [class*="drawer"] a,
+  [class*="drawer"] button {
+    color: #c8b898 !important;
+  }
+  [class*="drawer"] a:hover {
+    color: #b89b6a !important;
+  }
+
+  /* Dropdown panels */
+  #header-component details > div,
+  #header-component .header__dropdown,
+  #header-component [popover] {
+    background: #1a1a1a !important;
+    border-top: 2px solid #b89b6a !important;
+  }
+
+  /* Search bar */
+  #header-component input[type="search"],
+  #header-component input[type="text"] {
+    background: #2a2010 !important;
+    border-color: rgba(184,155,106,0.3) !important;
+    color: #d4b896 !important;
+  }
+  #header-component input::placeholder {
+    color: #6a5c4a !important;
+  }
+
+  /* Force all direct background vars */
+  .header-section {
+    --color-foreground: 200, 184, 152;
+    --color-background: 26, 26, 26;
+    --color-primary: 184, 155, 106;
+  }
+</style>
+
 {% schema %}
 {
   "name": "t:names.header",

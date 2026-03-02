@@ -1,217 +1,255 @@
 {% comment %}
-Mega Menu Section - Agriculture Theme
-Desktop: Full-width dropdown on hover
-Mobile: Hidden (content injected into mobile header drawer via JS)
+  Mega Menu Section — Premium Jewelry
+  Elegant dark bar with gold accents, full-width collection dropdown
 {% endcomment %}
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <style>
-.mega-menu-wrapper {
-  background-color: {{ section.settings.menu_bg_color }};
+/* ─── MEGA MENU WRAPPER ─── */
+.jw-mega-wrap {
+  background: {{ section.settings.menu_bg_color }};
   position: relative;
-  z-index: 4;
+  z-index: 200;
   width: 100%;
+  border-bottom: 1px solid rgba(184,155,106,0.25);
 }
-.mega-menu-container {
-  max-width: 1400px;
+.jw-mega-container {
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 28px;
 }
-.main-menu {
+.jw-main-menu {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
 }
-.menu-item { position: static; }
-.menu-item > a {
-  display: block;
-  padding: {{ section.settings.menu_padding }}px 20px;
+.jw-menu-item { position: static; }
+.jw-menu-item > a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: {{ section.settings.menu_padding }}px 22px;
   color: {{ section.settings.menu_text_color }};
   text-decoration: none;
+  font-family: 'Jost', sans-serif;
   font-size: {{ section.settings.menu_font_size }}px;
   font-weight: {{ section.settings.menu_font_weight }};
+  letter-spacing: {{ section.settings.menu_letter_spacing }}em;
   text-transform: {{ section.settings.menu_text_transform }};
-  transition: all 0.3s ease;
+  transition: color 0.3s;
   white-space: nowrap;
+  position: relative;
 }
-.menu-item > a:hover {
-  background-color: {{ section.settings.menu_hover_bg }};
-  color: {{ section.settings.menu_hover_color }};
-}
-.menu-item.has-mega-menu > a::after {
-  content: '\25BC';
-  font-size: 10px;
-  margin-left: 8px;
+.jw-menu-item > a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 22px; right: 22px; height: 1px;
+  background: {{ section.settings.menu_accent_color }};
+  transform: scaleX(0);
   transition: transform 0.3s ease;
+  transform-origin: center;
 }
-.menu-item.has-mega-menu:hover > a::after { transform: rotate(180deg); }
+.jw-menu-item > a:hover { color: {{ section.settings.menu_hover_color }}; }
+.jw-menu-item > a:hover::after,
+.jw-menu-item.has-mega:hover > a::after { transform: scaleX(1); }
 
-/* Desktop Dropdown */
-.mega-menu {
+/* Dropdown chevron */
+.jw-menu-item.has-mega > a .jw-chevron {
+  width: 8px; height: 8px;
+  stroke: {{ section.settings.menu_accent_color }};
+  fill: none; stroke-width: 2;
+  transition: transform 0.3s;
+}
+.jw-menu-item.has-mega:hover > a .jw-chevron { transform: rotate(180deg); }
+
+/* ─── MEGA DROPDOWN ─── */
+.jw-mega-panel {
   display: none;
   position: absolute;
-  left: 0; right: 0;
-  width: 100%;
+  left: 0; right: 0; width: 100%;
   background: #fff;
-  border-top: 3px solid #4caf50;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  padding: 30px 0;
+  border-top: 2px solid {{ section.settings.menu_accent_color }};
+  box-shadow: 0 20px 60px rgba(26,20,10,0.14);
   z-index: 999;
+  padding: 0;
 }
-.menu-item.has-mega-menu:hover .mega-menu { display: block; }
-.mega-menu-content {
-  max-width: 1400px;
+.jw-menu-item.has-mega:hover .jw-mega-panel { display: block; }
+
+.jw-mega-inner {
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 40px 40px 44px;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 48px;
 }
-.mega-collections-grid {
+
+/* Left column — category label */
+.jw-mega-label {
+  padding-top: 4px;
+  border-right: 1px solid #e8e0d5;
+  padding-right: 40px;
+}
+.jw-mega-cat {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 300; font-style: italic;
+  color: #1a1a1a; line-height: 1.2; margin-bottom: 12px;
+}
+.jw-mega-tagline {
+  font-family: 'Jost', sans-serif;
+  font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em;
+  text-transform: uppercase; color: #b89b6a;
+}
+.jw-mega-divider { width: 32px; height: 1px; background: #b89b6a; margin: 14px 0; }
+.jw-mega-view-all {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Jost', sans-serif;
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #1a1a1a; text-decoration: none;
+  margin-top: 6px; transition: color 0.2s;
+}
+.jw-mega-view-all:hover { color: #b89b6a; }
+.jw-mega-view-all svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+/* Collections grid */
+.jw-mega-grid {
   display: grid;
   grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
-  gap: 16px;
+  gap: 18px;
 }
-.mega-collection-card {
-  display: block;
-  text-decoration: none;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 2px solid #e8f5e9;
-  background: #f9fdf9;
-  transition: all 0.3s ease;
+.jw-col-card {
+  display: block; text-decoration: none;
+  border: 1px solid #e8e0d5;
+  overflow: hidden; background: #faf8f5;
+  transition: border-color 0.3s, box-shadow 0.3s;
   opacity: 0;
-  animation: fadeUp 0.3s ease forwards;
+  animation: jwFadeUp 0.35s ease forwards;
 }
-.mega-collection-card:hover {
-  border-color: #4caf50;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(76,175,80,0.18);
-}
-.mega-collection-card:nth-child(1) { animation-delay: 0.05s; }
-.mega-collection-card:nth-child(2) { animation-delay: 0.10s; }
-.mega-collection-card:nth-child(3) { animation-delay: 0.15s; }
-.mega-collection-card:nth-child(4) { animation-delay: 0.20s; }
-.mega-collection-card:nth-child(5) { animation-delay: 0.25s; }
-.mega-collection-card:nth-child(6) { animation-delay: 0.30s; }
-.mega-collection-card:nth-child(7) { animation-delay: 0.35s; }
-.mega-collection-card:nth-child(8) { animation-delay: 0.40s; }
-.mega-collection-img-wrap {
-  position: relative; width: 100%; padding-bottom: 70%;
-  overflow: hidden; background: #e8f5e9;
-}
-.mega-collection-img-wrap img {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; transition: transform 0.4s ease;
-}
-.mega-collection-card:hover .mega-collection-img-wrap img { transform: scale(1.07); }
-.mega-collection-img-placeholder {
-  position: absolute; inset: 0; display: flex;
-  align-items: center; justify-content: center;
-  font-size: 40px; background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-}
-.mega-collection-info {
-  padding: 10px 12px; display: flex;
-  align-items: center; justify-content: space-between; background: white;
-}
-.mega-collection-title {
-  font-size: 13px; font-weight: 700; color: #2e7d32;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-}
-.mega-collection-arrow { font-size: 14px; color: #4caf50; flex-shrink: 0; transition: transform 0.2s ease; }
-.mega-collection-card:hover .mega-collection-arrow { transform: translateX(3px); }
+.jw-col-card:hover { border-color: #b89b6a; box-shadow: 0 8px 28px rgba(184,155,106,0.18); }
+.jw-col-card:nth-child(1) { animation-delay: 0.04s; }
+.jw-col-card:nth-child(2) { animation-delay: 0.08s; }
+.jw-col-card:nth-child(3) { animation-delay: 0.12s; }
+.jw-col-card:nth-child(4) { animation-delay: 0.16s; }
+.jw-col-card:nth-child(5) { animation-delay: 0.20s; }
+.jw-col-card:nth-child(6) { animation-delay: 0.24s; }
+.jw-col-card:nth-child(7) { animation-delay: 0.28s; }
+.jw-col-card:nth-child(8) { animation-delay: 0.32s; }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(-8px); }
+@keyframes jwFadeUp {
+  from { opacity: 0; transform: translateY(-6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* MOBILE: Hide desktop mega menu bar entirely */
+.jw-col-img {
+  position: relative; width: 100%; padding-bottom: 75%; overflow: hidden;
+  background: #f0ece5;
+}
+.jw-col-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.45s ease; }
+.jw-col-card:hover .jw-col-img img { transform: scale(1.08); }
+.jw-col-img-ph { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 32px; background: linear-gradient(135deg,#f5f0e8,#ede6d8); }
+
+.jw-col-info {
+  padding: 11px 13px 12px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: #fff; border-top: 1px solid #e8e0d5;
+}
+.jw-col-name { font-family: 'Jost', sans-serif; font-size: 11.5px; font-weight: 500; letter-spacing: 0.06em; color: #1a1a1a; text-transform: capitalize; }
+.jw-col-arr { font-size: 13px; color: #b89b6a; transition: transform 0.2s; }
+.jw-col-card:hover .jw-col-arr { transform: translateX(3px); }
+
+/* ─── MOBILE: hide mega bar ─── */
 @media (max-width: 768px) {
-  .mega-menu-wrapper { display: none !important; }
+  .jw-mega-wrap { display: none !important; }
 }
 
-/* Mobile Mega Menu styles (injected into drawer) */
-.mobile-mega-menu-section { border-top: 1px solid rgba(0,0,0,0.1); margin-top: 4px; }
-.mobile-mega-menu-item { border-bottom: 1px solid rgba(0,0,0,0.06); }
-.mobile-mega-menu-toggle {
+/* ─── MOBILE MEGA (injected into drawer) ─── */
+.jw-mob-section { border-top: 1px solid rgba(0,0,0,0.1); margin-top: 4px; }
+.jw-mob-item { border-bottom: 1px solid rgba(0,0,0,0.06); }
+.jw-mob-toggle {
   display: flex; align-items: center; justify-content: space-between;
-  width: 100%; padding: 13px 20px;
+  width: 100%; padding: 14px 20px;
   background: transparent; border: none;
-  font-size: 14px; font-weight: 600; color: inherit;
-  text-align: left; cursor: pointer; line-height: 1.4;
+  font-size: 14px; font-weight: 500; letter-spacing: 0.03em; color: inherit;
+  text-align: left; cursor: pointer;
 }
-.mobile-mega-menu-toggle .mm-arrow {
-  font-size: 10px; transition: transform 0.25s; flex-shrink: 0; margin-left: 8px;
+.jw-mob-toggle .jw-mob-arr { font-size: 9px; transition: transform 0.25s; color: #b89b6a; }
+.jw-mob-item.jw-open .jw-mob-toggle .jw-mob-arr { transform: rotate(180deg); }
+.jw-mob-sub { display: none; padding: 4px 12px 14px; background: rgba(0,0,0,0.02); }
+.jw-mob-item.jw-open .jw-mob-sub { display: block; }
+.jw-mob-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; }
+.jw-mob-card {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 10px; border: 1px solid #e8e0d5; background: #fff;
+  text-decoration: none; color: #1a1a1a;
+  font-size: 11.5px; font-weight: 500; letter-spacing: 0.04em;
+  transition: border-color 0.2s;
 }
-.mobile-mega-menu-item.mm-open .mobile-mega-menu-toggle .mm-arrow { transform: rotate(180deg); }
-.mobile-mega-menu-submenu { display: none; padding: 4px 12px 12px; background: rgba(0,0,0,0.02); }
-.mobile-mega-menu-item.mm-open .mobile-mega-menu-submenu { display: block; }
-.mobile-mega-collections-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 7px; }
-.mobile-mega-collection-card {
-  display: flex; align-items: center; gap: 7px;
-  padding: 7px 9px; border-radius: 8px;
-  border: 1.5px solid #e0e0e0; background: #fff;
-  text-decoration: none; color: #2e7d32;
-  font-size: 11.5px; font-weight: 600;
-  transition: border-color 0.2s, background 0.2s;
-}
-.mobile-mega-collection-card:hover { border-color: #4caf50; background: #f0faf0; }
-.mobile-mega-collection-card img {
-  width: 32px; height: 32px; border-radius: 5px;
-  object-fit: cover; flex-shrink: 0;
-}
-.mobile-mega-collection-placeholder {
-  width: 32px; height: 32px; border-radius: 5px;
-  background: #e8f5e9; display: flex; align-items: center;
-  justify-content: center; font-size: 16px; flex-shrink: 0;
-}
-.mobile-mega-plain-link {
-  display: block; padding: 13px 20px;
-  font-size: 14px; font-weight: 500; color: inherit;
+.jw-mob-card:hover { border-color: #b89b6a; }
+.jw-mob-card img { width: 30px; height: 30px; object-fit: cover; flex-shrink: 0; }
+.jw-mob-ph { width: 30px; height: 30px; background: #f0ece5; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.jw-mob-plain {
+  display: block; padding: 14px 20px;
+  font-size: 14px; font-weight: 400; letter-spacing: 0.03em; color: inherit;
   text-decoration: none; border-bottom: 1px solid rgba(0,0,0,0.06);
 }
-.mobile-mega-plain-link:last-child { border-bottom: none; }
+.jw-mob-plain:last-child { border-bottom: none; }
 </style>
 
-<div class="mega-menu-wrapper">
-  <div class="mega-menu-container">
-    <nav>
-      <ul class="main-menu" id="mainMenu">
+<div class="jw-mega-wrap">
+  <div class="jw-mega-container">
+    <nav aria-label="Main navigation">
+      <ul class="jw-main-menu" id="jwMainMenu">
         {%- for link in section.settings.main_menu.links -%}
-          {%- assign mega_menu_array = section.settings.mega_menu_items | split: ',' -%}
+          {%- assign mega_items = section.settings.mega_menu_items | split: ',' -%}
           {%- assign has_mega = false -%}
-          {%- for item in mega_menu_array -%}
-            {%- assign item_trimmed = item | strip -%}
-            {%- if item_trimmed == link.title -%}{%- assign has_mega = true -%}{%- break -%}{%- endif -%}
+          {%- for item in mega_items -%}
+            {%- assign item_clean = item | strip -%}{%- if item_clean == link.title -%}{%- assign has_mega = true -%}{%- break -%}{%- endif -%}
           {%- endfor -%}
-          <li class="menu-item{%- if has_mega %} has-mega-menu{%- endif -%}">
-            <a href="{{ link.url }}">{{ link.title }}</a>
+          <li class="jw-menu-item{% if has_mega %} has-mega{% endif %}">
+            <a href="{{ link.url }}">
+              {{ link.title }}
+              {%- if has_mega -%}
+                <svg class="jw-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              {%- endif -%}
+            </a>
             {%- if has_mega -%}
-              <div class="mega-menu">
-                <div class="mega-menu-content">
-                  <div class="mega-collections-grid">
+              <div class="jw-mega-panel" role="region">
+                <div class="jw-mega-inner">
+                  <div class="jw-mega-label">
+                    <div class="jw-mega-cat">{{ link.title }}</div>
+                    <div class="jw-mega-tagline">{{ section.settings.mega_tagline | default: 'Fine Jewellery' }}</div>
+                    <div class="jw-mega-divider"></div>
+                    <a class="jw-mega-view-all" href="{{ link.url }}">
+                      View All
+                      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                  </div>
+                  <div class="jw-mega-grid">
                     {%- for block in section.blocks -%}
-                      {%- assign block_parent = block.settings.parent_menu_item | strip -%}
-                      {%- if block.type == 'collection_cards' and block_parent == link.title -%}
+                      {%- if block.type == 'collection_cards' and block.settings.parent_menu_item == link.title -%}
                         {%- assign col_ids = 'collection_1,collection_2,collection_3,collection_4,collection_5,collection_6,collection_7,collection_8' | split: ',' -%}
                         {%- for col_id in col_ids -%}
                           {%- assign col_handle = block.settings[col_id] -%}
                           {%- if col_handle != blank -%}
                             {%- assign col = collections[col_handle] -%}
-                            <a class="mega-collection-card" href="{{ col.url }}">
-                              <div class="mega-collection-img-wrap">
+                            <a class="jw-col-card" href="{{ col.url }}" {{ block.shopify_attributes }}>
+                              <div class="jw-col-img">
                                 {%- if col.image -%}
                                   <img src="{{ col.image | img_url: '400x' }}" alt="{{ col.title }}" loading="lazy">
                                 {%- elsif col.products.first.featured_image -%}
                                   <img src="{{ col.products.first.featured_image | img_url: '400x' }}" alt="{{ col.title }}" loading="lazy">
                                 {%- else -%}
-                                  <div class="mega-collection-img-placeholder">🌾</div>
+                                  <div class="jw-col-img-ph">💎</div>
                                 {%- endif -%}
                               </div>
-                              <div class="mega-collection-info">
-                                <span class="mega-collection-title">{{ col.title }}</span>
-                                <span class="mega-collection-arrow">→</span>
+                              <div class="jw-col-info">
+                                <span class="jw-col-name">{{ col.title }}</span>
+                                <span class="jw-col-arr">→</span>
                               </div>
                             </a>
                           {%- endif -%}
@@ -229,40 +267,35 @@ Mobile: Hidden (content injected into mobile header drawer via JS)
   </div>
 </div>
 
-{%- comment -%} Mobile menu data for drawer injection {%- endcomment -%}
-<script id="mega-menu-mobile-data" type="application/json">
+{%- comment -%} Mobile data JSON {%- endcomment -%}
+<script id="jw-mega-mobile-data" type="application/json">
 {
   "items": [
     {%- for link in section.settings.main_menu.links -%}
-      {%- assign mega_menu_array = section.settings.mega_menu_items | split: ',' -%}
+      {%- assign mega_items = section.settings.mega_menu_items | split: ',' -%}
       {%- assign has_mega = false -%}
-      {%- for item in mega_menu_array -%}
-        {%- assign item_trimmed = item | strip -%}
-        {%- if item_trimmed == link.title -%}{%- assign has_mega = true -%}{%- break -%}{%- endif -%}
-      {%- endfor -%}
+      {%- for item in mega_items -%}
+  {%- assign item_clean = item | strip -%}
+  {%- if item_clean == link.title -%}
+    {%- assign has_mega = true -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
       {%- if forloop.index > 1 -%},{%- endif -%}
-      {
-        "title": {{ link.title | json }},
-        "url": {{ link.url | json }},
-        "hasMega": {{ has_mega }},
+      { "title": {{ link.title | json }}, "url": {{ link.url | json }}, "hasMega": {{ has_mega }},
         "collections": [
           {%- if has_mega -%}
-            {%- assign col_count = 0 -%}
+            {%- assign cc = 0 -%}
             {%- for block in section.blocks -%}
-              {%- assign block_parent = block.settings.parent_menu_item | strip -%}
-              {%- if block.type == 'collection_cards' and block_parent == link.title -%}
+              {%- if block.type == 'collection_cards' and block.settings.parent_menu_item == link.title -%}
                 {%- assign col_ids = 'collection_1,collection_2,collection_3,collection_4,collection_5,collection_6,collection_7,collection_8' | split: ',' -%}
                 {%- for col_id in col_ids -%}
                   {%- assign col_handle = block.settings[col_id] -%}
                   {%- if col_handle != blank -%}
                     {%- assign col = collections[col_handle] -%}
-                    {%- if col_count > 0 -%},{%- endif -%}
-                    {
-                      "title": {{ col.title | json }},
-                      "url": {{ col.url | json }},
-                      "image": {%- if col.image -%}{{ col.image | img_url: '100x' | json }}{%- elsif col.products.first.featured_image -%}{{ col.products.first.featured_image | img_url: '100x' | json }}{%- else -%}null{%- endif -%}
-                    }
-                    {%- assign col_count = col_count | plus: 1 -%}
+                    {%- if cc > 0 -%},{%- endif -%}
+                    { "title": {{ col.title | json }}, "url": {{ col.url | json }}, "image": {%- if col.image -%}{{ col.image | img_url: '80x' | json }}{%- elsif col.products.first.featured_image -%}{{ col.products.first.featured_image | img_url: '80x' | json }}{%- else -%}null{%- endif -%} }
+                    {%- assign cc = cc | plus: 1 -%}
                   {%- endif -%}
                 {%- endfor -%}
               {%- endif -%}
@@ -277,150 +310,282 @@ Mobile: Hidden (content injected into mobile header drawer via JS)
 
 <script>
 (function() {
-  function injectMobileMegaMenu() {
-    var dataEl = document.getElementById('mega-menu-mobile-data');
+  function injectMobileMenu() {
+    var dataEl = document.getElementById('jw-mega-mobile-data');
     if (!dataEl) return;
     var data;
     try { data = JSON.parse(dataEl.textContent); } catch(e) { return; }
     if (!data || !data.items || !data.items.length) return;
 
-    // Horizon drawer: top-level UL has classes menu-drawer__menu AND has-submenu
     var drawerNav = document.querySelector('ul.menu-drawer__menu.has-submenu');
     if (!drawerNav) return;
+    if (drawerNav.querySelector('.jw-mob-section')) return;
 
-    // Prevent double injection
-    if (drawerNav.querySelector('.mobile-mega-menu-section')) return;
-
-    // Use a LI so it sits naturally inside Horizon's UL
-    var wrapperLi = document.createElement('li');
-    wrapperLi.className = 'mobile-mega-menu-section';
-    wrapperLi.style.cssText = 'list-style:none; padding:0; border-top:1px solid rgba(0,0,0,0.1);';
+    var wrapLi = document.createElement('li');
+    wrapLi.className = 'jw-mob-section';
+    wrapLi.style.cssText = 'list-style:none;padding:0;border-top:1px solid rgba(0,0,0,0.1)';
 
     data.items.forEach(function(item) {
       if (item.hasMega && item.collections && item.collections.length > 0) {
         var itemDiv = document.createElement('div');
-        itemDiv.className = 'mobile-mega-menu-item';
-
+        itemDiv.className = 'jw-mob-item';
         var btn = document.createElement('button');
-        btn.className = 'mobile-mega-menu-toggle';
-        btn.setAttribute('type', 'button');
-        btn.setAttribute('aria-expanded', 'false');
-        btn.innerHTML =
-          '<span class="menu-drawer__menu-item-text wrap-text">' + item.title + '</span>' +
-          '<span class="mm-arrow" aria-hidden="true">&#9660;</span>';
-        btn.addEventListener('click', function() {
-          var isOpen = itemDiv.classList.toggle('mm-open');
-          btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        });
-
-        var submenu = document.createElement('div');
-        submenu.className = 'mobile-mega-menu-submenu';
-
+        btn.type = 'button';
+        btn.className = 'jw-mob-toggle';
+        btn.innerHTML = '<span class="menu-drawer__menu-item-text wrap-text">' + item.title + '</span><span class="jw-mob-arr">&#9660;</span>';
+        btn.addEventListener('click', function() { itemDiv.classList.toggle('jw-open'); });
+        var sub = document.createElement('div');
+        sub.className = 'jw-mob-sub';
         var grid = document.createElement('div');
-        grid.className = 'mobile-mega-collections-grid';
-
+        grid.className = 'jw-mob-grid';
         item.collections.forEach(function(col) {
           var a = document.createElement('a');
-          a.href = col.url;
-          a.className = 'mobile-mega-collection-card';
-
-          if (col.image) {
-            var img = document.createElement('img');
-            img.src = col.image;
-            img.alt = col.title;
-            img.loading = 'lazy';
-            a.appendChild(img);
-          } else {
-            var ph = document.createElement('div');
-            ph.className = 'mobile-mega-collection-placeholder';
-            ph.setAttribute('aria-hidden', 'true');
-            ph.textContent = '\uD83C\uDF3E';
-            a.appendChild(ph);
-          }
-
-          var span = document.createElement('span');
-          span.textContent = col.title;
-          a.appendChild(span);
+          a.href = col.url; a.className = 'jw-mob-card';
+          if (col.image) { var img = document.createElement('img'); img.src = col.image; img.alt = col.title; img.loading = 'lazy'; a.appendChild(img); }
+          else { var ph = document.createElement('div'); ph.className = 'jw-mob-ph'; ph.textContent = '💎'; a.appendChild(ph); }
+          var sp = document.createElement('span'); sp.textContent = col.title; a.appendChild(sp);
           grid.appendChild(a);
         });
-
-        submenu.appendChild(grid);
-        itemDiv.appendChild(btn);
-        itemDiv.appendChild(submenu);
-        wrapperLi.appendChild(itemDiv);
+        sub.appendChild(grid); itemDiv.appendChild(btn); itemDiv.appendChild(sub);
+        wrapLi.appendChild(itemDiv);
       } else {
         var a = document.createElement('a');
         a.href = item.url;
-        a.className = 'mobile-mega-plain-link menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset';
+        a.className = 'jw-mob-plain menu-drawer__menu-item menu-drawer__animated-element focus-inset';
         a.innerHTML = '<span class="menu-drawer__menu-item-text wrap-text">' + item.title + '</span>';
-        wrapperLi.appendChild(a);
+        wrapLi.appendChild(a);
       }
     });
-
-    drawerNav.appendChild(wrapperLi);
+    drawerNav.appendChild(wrapLi);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectMobileMegaMenu);
-  } else {
-    injectMobileMegaMenu();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', injectMobileMenu);
+  else injectMobileMenu();
+  setTimeout(injectMobileMenu, 500);
+  setTimeout(injectMobileMenu, 1500);
 
-  setTimeout(injectMobileMegaMenu, 500);
-  setTimeout(injectMobileMegaMenu, 1500);
-
-  // Horizon hamburger uses <summary> inside header-drawer custom element
   document.addEventListener('click', function(e) {
-    if (e.target.closest('summary.header__icon--summary, .header__icon--menu')) {
-      setTimeout(injectMobileMegaMenu, 150);
-    }
+    if (e.target.closest('summary.header__icon--summary,.header__icon--menu')) setTimeout(injectMobileMenu, 150);
   });
 
-  // MutationObserver — Horizon lazy-renders the drawer on first open
-  var observer = new MutationObserver(function() {
-    var drawerNav = document.querySelector('ul.menu-drawer__menu.has-submenu');
-    if (drawerNav && !drawerNav.querySelector('.mobile-mega-menu-section')) {
-      injectMobileMegaMenu();
-    }
+  var obs = new MutationObserver(function() {
+    var nav = document.querySelector('ul.menu-drawer__menu.has-submenu');
+    if (nav && !nav.querySelector('.jw-mob-section')) injectMobileMenu();
   });
-  observer.observe(document.body, { childList: true, subtree: true });
+  obs.observe(document.body, { childList: true, subtree: true });
 })();
 </script>
 
 {% schema %}
 {
-  "name": "Mega Menu",
+  "name": "Jewelry Mega Menu",
   "settings": [
-    { "type": "link_list", "id": "main_menu", "label": "Main Menu", "default": "main-menu" },
-    { "type": "text", "id": "mega_menu_items", "label": "Menu Items with Mega Menu", "info": "Comma separated exact names (e.g., Catalog,Shop)", "default": "Catalog" },
-    { "type": "select", "id": "columns", "label": "Grid Columns", "options": [{ "value": "2", "label": "2" },{ "value": "3", "label": "3" },{ "value": "4", "label": "4" },{ "value": "5", "label": "5" },{ "value": "6", "label": "6" }], "default": "4" },
-    { "type": "header", "content": "Menu Bar Styling" },
-    { "type": "color", "id": "menu_bg_color", "label": "Background Color", "default": "#e31e24" },
-    { "type": "color", "id": "menu_text_color", "label": "Text Color", "default": "#ffffff" },
-    { "type": "color", "id": "menu_hover_bg", "label": "Hover Background", "default": "#c91a1f" },
-    { "type": "color", "id": "menu_hover_color", "label": "Hover Text Color", "default": "#ffffff" },
-    { "type": "range", "id": "menu_padding", "label": "Padding", "min": 10, "max": 30, "step": 2, "default": 16, "unit": "px" },
-    { "type": "range", "id": "menu_font_size", "label": "Font Size", "min": 12, "max": 20, "step": 1, "default": 14, "unit": "px" },
-    { "type": "select", "id": "menu_font_weight", "label": "Font Weight", "options": [{ "value": "400", "label": "Normal" },{ "value": "500", "label": "Medium" },{ "value": "600", "label": "Semi Bold" },{ "value": "700", "label": "Bold" }], "default": "500" },
-    { "type": "select", "id": "menu_text_transform", "label": "Text Transform", "options": [{ "value": "none", "label": "None" },{ "value": "uppercase", "label": "Uppercase" },{ "value": "capitalize", "label": "Capitalize" }], "default": "none" }
+    {
+      "type": "link_list",
+      "id": "main_menu",
+      "label": "Main Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "mega_menu_items",
+      "label": "Items with Mega Menu (comma-separated)",
+      "default": "Collections,Jewelry"
+    },
+    {
+      "type": "text",
+      "id": "mega_tagline",
+      "label": "Mega Panel Tagline",
+      "default": "Fine Jewellery"
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Grid Columns",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        },
+        {
+          "value": "5",
+          "label": "5"
+        },
+        {
+          "value": "6",
+          "label": "6"
+        }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "header",
+      "content": "Menu Bar Style"
+    },
+    {
+      "type": "color",
+      "id": "menu_bg_color",
+      "label": "Background",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "menu_text_color",
+      "label": "Text Color",
+      "default": "#d4c4aa"
+    },
+    {
+      "type": "color",
+      "id": "menu_hover_color",
+      "label": "Hover Text Color",
+      "default": "#b89b6a"
+    },
+    {
+      "type": "color",
+      "id": "menu_accent_color",
+      "label": "Gold Accent",
+      "default": "#b89b6a"
+    },
+    {
+      "type": "range",
+      "id": "menu_padding",
+      "label": "Vertical Padding",
+      "min": 10,
+      "max": 28,
+      "step": 2,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "menu_font_size",
+      "label": "Font Size",
+      "min": 11,
+      "max": 16,
+      "step": 1,
+      "default": 12,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "menu_font_weight",
+      "label": "Font Weight",
+      "options": [
+        {
+          "value": "300",
+          "label": "Light"
+        },
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "select",
+      "id": "menu_text_transform",
+      "label": "Text Transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize"
+        }
+      ],
+      "default": "uppercase"
+    },
+    {
+      "type": "range",
+      "id": "menu_letter_spacing",
+      "label": "Letter Spacing",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "default": 12,
+      "unit": "px"
+    }
   ],
   "blocks": [
     {
       "type": "collection_cards",
-      "name": "Collection Cards",
+      "name": "Collection Group",
       "settings": [
-        { "type": "text", "id": "parent_menu_item", "label": "Parent Menu Item", "info": "Exact menu name (e.g., Catalog)" },
-        { "type": "collection", "id": "collection_1", "label": "Collection 1" },
-        { "type": "collection", "id": "collection_2", "label": "Collection 2" },
-        { "type": "collection", "id": "collection_3", "label": "Collection 3" },
-        { "type": "collection", "id": "collection_4", "label": "Collection 4" },
-        { "type": "collection", "id": "collection_5", "label": "Collection 5" },
-        { "type": "collection", "id": "collection_6", "label": "Collection 6" },
-        { "type": "collection", "id": "collection_7", "label": "Collection 7" },
-        { "type": "collection", "id": "collection_8", "label": "Collection 8" }
+        {
+          "type": "text",
+          "id": "parent_menu_item",
+          "label": "Parent Menu Item (exact name)"
+        },
+        {
+          "type": "collection",
+          "id": "collection_1",
+          "label": "Collection 1"
+        },
+        {
+          "type": "collection",
+          "id": "collection_2",
+          "label": "Collection 2"
+        },
+        {
+          "type": "collection",
+          "id": "collection_3",
+          "label": "Collection 3"
+        },
+        {
+          "type": "collection",
+          "id": "collection_4",
+          "label": "Collection 4"
+        },
+        {
+          "type": "collection",
+          "id": "collection_5",
+          "label": "Collection 5"
+        },
+        {
+          "type": "collection",
+          "id": "collection_6",
+          "label": "Collection 6"
+        },
+        {
+          "type": "collection",
+          "id": "collection_7",
+          "label": "Collection 7"
+        },
+        {
+          "type": "collection",
+          "id": "collection_8",
+          "label": "Collection 8"
+        }
       ]
     }
   ],
-  "presets": [{ "name": "Mega Menu" }]
+  "presets": [
+    {
+      "name": "Jewelry Mega Menu"
+    }
+  ]
 }
 {% endschema %}

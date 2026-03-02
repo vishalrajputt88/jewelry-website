@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "type": "header",
   "name": "Header",
@@ -76,11 +67,11 @@
       "type": "custom-annousbar",
       "name": "Announcement bar",
       "settings": {
-        "announcement_text": "Get Up to 40% OFF On Bulk Purchasing | Use Code “SAVE10” For Instant 10% Discount",
+        "announcement_text": "Free Shipping on Orders Above \u20b92,999 | BIS Hallmarked Gold | IGI Certified Diamonds | 30-Day Returns | Lifetime Polishing Free",
         "menu": "announce-menus",
-        "background_color": "#16a34a",
-        "text_color": "#ffffff",
-        "link_color": "#ffffff"
+        "background_color": "#1a1a1a",
+        "text_color": "#d4b896",
+        "link_color": "#b89b6a"
       }
     },
     "header_section": {
@@ -187,87 +178,6 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
-    },
-    "mega_menu_section_pAjFM8": {
-      "type": "mega-menu-section",
-      "blocks": {
-        "collection_cards_8xDLxn": {
-          "type": "collection_cards",
-          "settings": {
-            "parent_menu_item": "Pesticides/ Insecticides",
-            "collection_1": "insecticides",
-            "collection_2": "bio-insecticides",
-            "collection_3": "",
-            "collection_4": "",
-            "collection_5": "",
-            "collection_6": "",
-            "collection_7": "",
-            "collection_8": ""
-          }
-        },
-        "collection_cards_KrYPKB": {
-          "type": "collection_cards",
-          "settings": {
-            "parent_menu_item": "Fungicide",
-            "collection_1": "fungicides",
-            "collection_2": "bio-fungicide",
-            "collection_3": "",
-            "collection_4": "",
-            "collection_5": "",
-            "collection_6": "",
-            "collection_7": "",
-            "collection_8": ""
-          }
-        },
-        "collection_cards_EHk8e8": {
-          "type": "collection_cards",
-          "settings": {
-            "parent_menu_item": "Seed",
-            "collection_1": "beans-फलियाँ",
-            "collection_2": "bitter-gourd-karela",
-            "collection_3": "bottle-gourd-लौकी",
-            "collection_4": "cauliflower-फूलगोभी",
-            "collection_5": "eggplant-बैंगन",
-            "collection_6": "hot-pepper-मिर्ची",
-            "collection_7": "",
-            "collection_8": ""
-          }
-        },
-        "collection_cards_fEcy9B": {
-          "type": "collection_cards",
-          "settings": {
-            "parent_menu_item": "Fertiliser",
-            "collection_1": "bio-fertilizers",
-            "collection_2": "water-soluble-fertilizers",
-            "collection_3": "customize-soluble-fertilizer",
-            "collection_4": "liquid-fertilizers",
-            "collection_5": "",
-            "collection_6": "",
-            "collection_7": "",
-            "collection_8": ""
-          }
-        }
-      },
-      "block_order": [
-        "collection_cards_8xDLxn",
-        "collection_cards_KrYPKB",
-        "collection_cards_EHk8e8",
-        "collection_cards_fEcy9B"
-      ],
-      "name": "Mega Menu",
-      "settings": {
-        "main_menu": "main-menu",
-        "mega_menu_items": "Fertiliser,Seed,Fungicide,Pesticides/ Insecticides",
-        "columns": "6",
-        "menu_bg_color": "#e31e24",
-        "menu_text_color": "#ffffff",
-        "menu_hover_bg": "#c91a1f",
-        "menu_hover_color": "#ffffff",
-        "menu_padding": 16,
-        "menu_font_size": 15,
-        "menu_font_weight": "600",
-        "menu_text_transform": "none"
-      }
     }
   },
   "order": [
@@ -275,7 +185,6 @@
     "17718513503ec7aa49",
     "custom_annousbar_wmdj9U",
     "header_section",
-    "17715735549d27ab19",
-    "mega_menu_section_pAjFM8"
+    "17715735549d27ab19"
   ]
 }

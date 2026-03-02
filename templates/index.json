@@ -1,737 +1,200 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "custom_agri_slidder_UPBpVU": {
+    "jw_slider": {
       "type": "custom-agri-slidder",
-      "name": "Agriculture slider",
+      "name": "Hero Slider",
       "settings": {
-        "desktop_width_percent": 100,
-        "border_radius": 0,
-        "image_position": "center",
         "autoplay": true,
-        "autoplay_speed": 3,
-        "transition_speed": 0.5,
-        "show_navigation": true,
-        "show_dots": true,
-        "nav_button_size": 45,
-        "nav_offset": 20,
-        "nav_icon_color": "#ffffff",
-        "nav_opacity": 0.8,
-        "dot_size": 10,
-        "dots_spacing": 8,
-        "dots_offset": 20,
-        "dot_color": "#ffffff",
-        "dot_active_color": "#7cb342",
-        "dot_opacity": 0.5,
-        "overlay_style": "left_fade",
-        "overlay_opacity": 1,
-        "text_area_width": 50,
-        "content_alignment": "center",
-        "content_spacing": 20,
-        "padding_vertical": 60,
-        "padding_horizontal": 40,
-        "heading_size": 56,
-        "heading_color": "#ffffff",
-        "subheading_size": 20,
-        "description_size": 16,
-        "text_color": "#f5f5f5",
-        "text_shadow": "medium",
-        "button_font_size": 16,
-        "button_padding_vertical": 14,
-        "button_padding_horizontal": 32,
-        "button_bg_color": "#7cb342",
-        "button_text_color": "#ffffff",
-        "button_hover_bg_color": "#558b2f",
-        "button_hover_text_color": "#ffffff",
-        "button_border_radius": 8,
-        "slide_1_image": "shopify://shop_images/Rectangle_3_1.png",
-        "slide_1_mobile_image": "shopify://shop_images/kisan-mobile-banner.png",
-        "slide_1_heading": "",
-        "slide_1_subheading": "",
-        "slide_1_description": "",
-        "slide_1_button_text": "",
+        "autoplay_speed": 5,
+        "slide_1_eyebrow": "New Collection 2025",
+        "slide_1_heading": "Crafted for Eternity",
+        "slide_1_subheading": "Discover our exclusive range of fine jewellery, handcrafted with certified diamonds and hallmarked gold.",
+        "slide_1_button_text": "Shop Now",
         "slide_1_button_link": "",
-        "slide_2_image": "shopify://shop_images/2-1_1.png",
-        "slide_2_mobile_image": "shopify://shop_images/kisan-mobile-banner-2.png",
-        "slide_2_heading": "",
-        "slide_2_subheading": "",
-        "slide_2_description": "",
-        "slide_2_button_text": "",
+        "slide_1_button2_text": "View Collections",
+        "slide_1_button2_link": "",
+        "slide_2_eyebrow": "Bridal Collection",
+        "slide_2_heading": "Your Perfect Moment",
+        "slide_2_subheading": "Exquisite bridal sets designed to make your special day unforgettable.",
+        "slide_2_button_text": "Explore Bridal",
         "slide_2_button_link": "",
-        "slide_3_heading": "",
-        "slide_3_subheading": "",
-        "slide_3_description": "",
-        "slide_3_button_text": "",
-        "slide_3_button_link": "",
-        "slide_4_heading": "",
-        "slide_4_subheading": "",
-        "slide_4_description": "",
-        "slide_4_button_text": "",
-        "slide_4_button_link": "",
-        "slide_5_heading": "",
-        "slide_5_subheading": "",
-        "slide_5_description": "",
-        "slide_5_button_text": "",
-        "slide_5_button_link": ""
+        "slide_2_button2_text": ""
       }
     },
-    "shop_by_catagory_MNBUwx": {
-      "type": "shop-by-catagory",
-      "blocks": {
-        "category_item_wcVT8w": {
-          "type": "category_item",
-          "settings": {
-            "category_image": "shopify://shop_images/plant-growth-promoter-bhumi_agro.png",
-            "category_title": "Plant Growth Promoters",
-            "category_url": "shopify://collections/plantgrowthpromoters"
-          }
-        },
-        "category_item_EyDYqL": {
-          "type": "category_item",
-          "settings": {
-            "category_image": "shopify://shop_images/Flower-Booster-Bhumi-Agro.png",
-            "category_title": "Flower booster",
-            "category_url": "shopify://collections/flower-boosters"
-          }
-        },
-        "category_item_mbf4FC": {
-          "type": "category_item",
-          "settings": {
-            "category_image": "shopify://shop_images/Fertilisers-Products-Bhumi-Agro.png",
-            "category_title": "Fertiliser",
-            "category_url": "shopify://collections/fertilizers-products"
-          }
-        },
-        "category_item_UzbbjW": {
-          "type": "category_item",
-          "settings": {
-            "category_image": "shopify://shop_images/Mix-Micronutrients-Bhumi-Agro.png",
-            "category_title": "Mix Micronutrients",
-            "category_url": "shopify://collections/micronutrients"
-          }
-        },
-        "category_item_WdGtxw": {
-          "type": "category_item",
-          "settings": {
-            "category_image": "shopify://shop_images/Pesticides-Fungicides-Bhumi-Agro.png",
-            "category_title": "Pesticides/ Insecticides",
-            "category_url": "shopify://collections/insecticides-or-pesticides"
-          }
-        },
-        "category_item_QDNMhh": {
-          "type": "category_item",
-          "settings": {
-            "category_image": "shopify://shop_images/Fungicides-Bhumi-Agro.png",
-            "category_title": "Fungicide",
-            "category_url": "shopify://collections/fungicides"
-          }
-        },
-        "category_item_cJepkG": {
-          "type": "category_item",
-          "settings": {
-            "category_image": "shopify://shop_images/Seeds-Bhumi-Agro.png",
-            "category_title": "Seed",
-            "category_url": "shopify://collections/seed-बीज-category"
-          }
-        },
-        "category_item_PaakAH": {
-          "type": "category_item",
-          "settings": {
-            "category_image": "shopify://shop_images/Home-Gardening-Bhumi-Agro.png",
-            "category_title": "Home Gardening",
-            "category_url": "shopify://collections/home-gardening-products"
-          }
-        }
-      },
-      "block_order": [
-        "category_item_wcVT8w",
-        "category_item_EyDYqL",
-        "category_item_mbf4FC",
-        "category_item_UzbbjW",
-        "category_item_WdGtxw",
-        "category_item_QDNMhh",
-        "category_item_cJepkG",
-        "category_item_PaakAH"
-      ],
-      "name": "Shop by categories",
+    "jw_annbar": {
+      "type": "custom-annousbar",
+      "name": "Announcement Bar",
       "settings": {
-        "heading": "Shop by Categories",
-        "heading_font": "poppins_n4",
-        "heading_font_weight": "700",
-        "heading_size": 40,
-        "heading_text_transform": "none",
-        "heading_letter_spacing": 0,
-        "heading_color": "#000000",
-        "heading_spacing": 48,
-        "background_color": "#ffffff",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "item_spacing": 30,
-        "circle_size": 180,
-        "enable_hover_effect": true,
-        "title_font": "assistant_n4",
-        "title_font_weight": "600",
-        "title_size": 16,
-        "title_line_height": "1.3",
-        "title_text_transform": "none",
-        "title_letter_spacing": 0,
-        "title_color": "#000000"
+        "messages": "Free Shipping on Orders Above \u20b92,999 | BIS Hallmarked Gold Jewellery | IGI Certified Diamonds | 30-Day Easy Returns | EMI Available | Lifetime Polishing Free",
+        "background_color": "#1a1a1a",
+        "text_color": "#d4b896",
+        "accent_color": "#b89b6a"
       }
     },
-    "benefits_boxes_section_rkhDdR": {
+    "jw_benefits": {
       "type": "benefits-boxes-section",
-      "name": "Benefits badge",
+      "name": "Benefits",
       "settings": {
         "section_background_color": "#ffffff",
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "badge_background_color": "#eef2ef",
-        "icon_background_color": "#4a7c59",
+        "icon_background_color": "#1a1a1a",
         "text_color": "#1a1a1a",
-        "border_radius": 10,
-        "feature_1_icon": "shopify://shop_images/Vector_3.png",
-        "feature_1_title": "100% result driven",
-        "feature_2_icon": "shopify://shop_images/Group_1957.png",
-        "feature_2_title": "Expert Advisory on all crop",
-        "feature_3_icon": "shopify://shop_images/Group_1958.png",
-        "feature_3_title": "Trusted by 10 Million farmers",
-        "feature_4_icon": "shopify://shop_images/Group_1959.png",
-        "feature_4_title": "R & D product"
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "feature_1_title": "BIS Hallmarked Gold",
+        "feature_1_subtitle": "Certified purity guaranteed",
+        "feature_2_title": "IGI Certified Diamonds",
+        "feature_2_subtitle": "Internationally certified",
+        "feature_3_title": "30-Day Returns",
+        "feature_3_subtitle": "Hassle-free exchange",
+        "feature_4_title": "Free Shipping",
+        "feature_4_subtitle": "On orders above \u20b92,999"
       }
     },
-    "section_8A7TGN": {
-      "type": "section",
-      "name": "t:names.custom_section",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "common_banner_for_section_N3YqmD": {
-      "type": "common-banner-for-section",
-      "name": "Full width image",
-      "settings": {
-        "banner_image": "shopify://shop_images/best-selling-bhumi.png",
-        "desktop_width_percent": 100,
-        "custom_width": 780,
-        "object_fit": "cover",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "background_color": ""
-      }
-    },
-    "custom_best_selling_PTRNhe": {
-      "type": "custom-best-selling",
-      "name": "Best selling products",
-      "settings": {
-        "heading": "Best Selling Products",
-        "collection": "best-seller",
-        "products_per_row_desktop": 4,
-        "products_per_row_mobile": "2",
-        "show_rating": false,
-        "button_text": "Add to Cart",
-        "show_metafield": false,
-        "metafield_reference": "",
-        "show_view_all": true,
-        "view_all_text": "VIEW ALL {{ section.settings.collection.title }} PRODUCTS"
-      }
-    },
-    "promotional_banner_MUXcjH": {
-      "type": "promotional-banner",
-      "name": "Promotional banners",
-      "settings": {
-        "image_1": "shopify://shop_images/Rectangle_273.png",
-        "image_2": "shopify://shop_images/Rectangle_274.png",
-        "image_3": "shopify://shop_images/Rectangle_273.png",
-        "image_4": "shopify://shop_images/Rectangle_274.png",
-        "background_color": "#ffffff",
-        "padding_top": 0,
-        "padding_bottom": 0
-      }
-    },
-    "watch_buy_section_qqkh6i": {
-      "type": "watch-buy-section",
+    "jw_cats": {
+      "type": "shop-by-catagory",
       "blocks": {
-        "reel_N9ygEc": {
-          "type": "reel",
-          "settings": {
-            "reel_image": "shopify://shop_images/IMG_2622-scaled.jpg",
-            "reel_video": "shopify://files/videos/3500 किलो उत्पादन कैसे निकला.mp4",
-            "reel_product": "",
-            "reel_discount": "30% Off"
-          }
-        },
-        "reel_6cmTXr": {
-          "type": "reel",
-          "settings": {
-            "reel_image": "shopify://shop_images/Rectangle_32.png",
-            "reel_video": "shopify://files/videos/Lehsun ki 90 din ke fasal 😍Lehsun mai last spray, lehsun mai kand ka size, lehsun mai 90din mai.mp4",
-            "reel_product": "bhumi-tridev",
-            "reel_discount": "30% Off"
-          }
-        },
-        "reel_6qxWqr": {
-          "type": "reel",
-          "settings": {
-            "reel_image": "shopify://shop_images/BHUMIGREENKDETAILS.png",
-            "reel_video": "shopify://files/videos/धान में ज़बरदस्त जड़ो का विकास देखो कैसे.mp4",
-            "reel_product": "bhumi-tridev",
-            "reel_discount": "30% Off"
-          }
-        },
-        "reel_FHmLt3": {
-          "type": "reel",
-          "settings": {
-            "reel_image": "shopify://shop_images/Rectangle_34_1.png",
-            "reel_video": "shopify://files/videos/Instagram-video.mp4",
-            "reel_product": "bhumi-tridev",
-            "reel_discount": "30% Off"
-          }
-        },
-        "reel_yfzkcM": {
-          "type": "reel",
-          "settings": {
-            "reel_image": "shopify://shop_images/Rectangle_31.png",
-            "reel_video": "shopify://files/videos/माहू का खेल ख़त्म 3 मिनट के अंदर.mp4",
-            "reel_product": "bhumi-tridev",
-            "reel_discount": "30% Off"
-          }
-        }
+        "c1": { "type": "category_item", "settings": { "category_title": "Rings", "category_url": "/collections/rings" } },
+        "c2": { "type": "category_item", "settings": { "category_title": "Necklaces", "category_url": "/collections/necklaces" } },
+        "c3": { "type": "category_item", "settings": { "category_title": "Earrings", "category_url": "/collections/earrings" } },
+        "c4": { "type": "category_item", "settings": { "category_title": "Bangles", "category_url": "/collections/bangles" } },
+        "c5": { "type": "category_item", "settings": { "category_title": "Bracelets", "category_url": "/collections/bracelets" } },
+        "c6": { "type": "category_item", "settings": { "category_title": "Pendants", "category_url": "/collections/pendants" } },
+        "c7": { "type": "category_item", "settings": { "category_title": "Anklets", "category_url": "/collections/anklets" } },
+        "c8": { "type": "category_item", "settings": { "category_title": "Chains", "category_url": "/collections/chains" } }
       },
-      "block_order": [
-        "reel_N9ygEc",
-        "reel_6cmTXr",
-        "reel_6qxWqr",
-        "reel_FHmLt3",
-        "reel_yfzkcM"
-      ],
-      "name": "Watch & Buy Reels",
+      "block_order": ["c1","c2","c3","c4","c5","c6","c7","c8"],
+      "name": "Shop by Categories",
       "settings": {
-        "heading": "Watch Reels & Buy Our New Arrivals"
+        "eyebrow": "Collections",
+        "heading": "Shop by Category",
+        "heading_color": "#1a1a1a",
+        "background_color": "#faf8f5",
+        "padding_top": 72,
+        "padding_bottom": 72,
+        "columns_desktop": "5",
+        "item_gap": 16
       }
     },
-    "common_banner_for_section_9Nn3FH": {
-      "type": "common-banner-for-section",
-      "name": "Plant Growth Promoters",
-      "settings": {
-        "banner_image": "shopify://shop_images/Group_1948_3.png",
-        "desktop_width_percent": 100,
-        "custom_width": 780,
-        "object_fit": "cover",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "background_color": ""
-      }
-    },
-    "custom_best_selling_cpUYCy": {
+    "jw_bestsell": {
       "type": "custom-best-selling",
-      "name": "Plant Growth Promoters",
+      "name": "Best Selling Products",
       "settings": {
-        "heading": "Best Selling Products",
-        "collection": "plantgrowthpromoters",
+        "eyebrow": "Bestsellers",
+        "heading": "Our Most Loved Pieces",
+        "collection": "best-seller",
+        "bg_color": "#ffffff",
         "products_per_row_desktop": 4,
         "products_per_row_mobile": "2",
-        "show_rating": true,
-        "button_text": "Add to Cart",
-        "show_metafield": false,
-        "metafield_reference": "",
         "show_view_all": true,
-        "view_all_text": "VIEW ALL {{ section.settings.collection.title }} PRODUCTS"
+        "button_text": "Add to Bag"
       }
     },
-    "common_banner_for_section_afzb6L": {
-      "type": "common-banner-for-section",
-      "name": "Insecticides/Pesticides",
+    "jw_promobanner": {
+      "type": "promotional-banner",
+      "name": "Promotional Banners",
       "settings": {
-        "banner_image": "shopify://shop_images/Group_1948_4.png",
-        "desktop_width_percent": 100,
-        "custom_width": 780,
-        "object_fit": "cover",
+        "background_color": "#faf8f5",
         "padding_top": 0,
         "padding_bottom": 0,
-        "background_color": ""
+        "aspect_ratio": "4/3",
+        "eyebrow_1": "New Arrivals",
+        "title_1": "Bridal Collection",
+        "cta_1": "Shop Now",
+        "eyebrow_2": "Exclusive",
+        "title_2": "Diamond Jewellery",
+        "cta_2": "Explore"
       }
     },
-    "custom_best_selling_GCTBmf": {
-      "type": "custom-best-selling",
-      "name": "Insecticides/Pesticides",
-      "settings": {
-        "heading": "Best Selling Products",
-        "collection": "bio-pesticide",
-        "products_per_row_desktop": 4,
-        "products_per_row_mobile": "2",
-        "show_rating": true,
-        "button_text": "Add to Cart",
-        "show_metafield": false,
-        "metafield_reference": "",
-        "show_view_all": true,
-        "view_all_text": "VIEW ALL {{ section.settings.collection.title }} PRODUCTS"
-      }
-    },
-    "common_banner_for_section_azCz3f": {
-      "type": "common-banner-for-section",
-      "name": "Funficide",
-      "settings": {
-        "banner_image": "shopify://shop_images/Group_1948_5.png",
-        "desktop_width_percent": 100,
-        "custom_width": 780,
-        "object_fit": "cover",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "background_color": ""
-      }
-    },
-    "custom_best_selling_wdbiW8": {
-      "type": "custom-best-selling",
-      "name": "Funficide",
-      "settings": {
-        "heading": "Best Selling Products",
-        "collection": "bio-fungicide",
-        "products_per_row_desktop": 4,
-        "products_per_row_mobile": "2",
-        "show_rating": true,
-        "button_text": "Add to Cart",
-        "show_metafield": false,
-        "metafield_reference": "",
-        "show_view_all": true,
-        "view_all_text": "VIEW ALL {{ section.settings.collection.title }} PRODUCTS"
-      }
-    },
-    "common_banner_for_section_zNWatq": {
-      "type": "common-banner-for-section",
-      "name": "Combo Kit",
-      "settings": {
-        "banner_image": "shopify://shop_images/Group_1948_6.png",
-        "desktop_width_percent": 100,
-        "custom_width": 780,
-        "object_fit": "cover",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "background_color": ""
-      }
-    },
-    "custom_best_selling_fnEVzz": {
-      "type": "custom-best-selling",
-      "name": "Combo Kit",
-      "settings": {
-        "heading": "Best Selling Products",
-        "collection": "bio-insecticides",
-        "products_per_row_desktop": 4,
-        "products_per_row_mobile": "2",
-        "show_rating": true,
-        "button_text": "Add to Cart",
-        "show_metafield": false,
-        "metafield_reference": "",
-        "show_view_all": true,
-        "view_all_text": "VIEW ALL {{ section.settings.collection.title }} PRODUCTS"
-      }
-    },
-    "common_banner_for_section_VeeBfy": {
-      "type": "common-banner-for-section",
-      "name": "Shop by Crop",
-      "settings": {
-        "banner_image": "shopify://shop_images/Group_1948_7.png",
-        "desktop_width_percent": 100,
-        "custom_width": 780,
-        "object_fit": "cover",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "background_color": ""
-      }
-    },
-    "custom_best_selling_rbEtb4": {
-      "type": "custom-best-selling",
-      "name": "Shop by Crop",
-      "settings": {
-        "heading": "Best Selling Products",
-        "collection": "bio-insecticides",
-        "products_per_row_desktop": 4,
-        "products_per_row_mobile": "2",
-        "show_rating": true,
-        "button_text": "Add to Cart",
-        "show_metafield": false,
-        "metafield_reference": "",
-        "show_view_all": true,
-        "view_all_text": "VIEW ALL {{ section.settings.collection.title }} PRODUCTS"
-      }
-    },
-    "custom_featured_product_WQpjk9": {
-      "type": "custom-featured-product",
-      "name": "custom featured product",
-      "settings": {
-        "max_width": 1350,
-        "column_gap": 60,
-        "mobile_gap": 40,
-        "section_background": "#f5f5f5",
-        "section_padding_top": 60,
-        "section_padding_bottom": 60,
-        "section_padding_horizontal": 40,
-        "mobile_padding_top": 40,
-        "mobile_padding_bottom": 40,
-        "mobile_padding_horizontal": 20,
-        "product_image": "shopify://shop_images/image_19.png",
-        "featured_product": "",
-        "image_border_radius": 12,
-        "atc_button_text": "Add to Cart",
-        "adding_text": "Adding...",
-        "added_text": "Added!",
-        "sold_out_text": "Sold Out",
-        "error_text": "Error",
-        "atc_button_background": "#ffffff",
-        "atc_button_text_color": "#000000",
-        "atc_button_border_color": "#ffffff",
-        "atc_button_hover_background": "#000000",
-        "atc_button_hover_text_color": "#ffffff",
-        "atc_button_hover_border_color": "#000000",
-        "atc_button_border_width": 2,
-        "atc_button_border_radius": 8,
-        "atc_button_text_size": 14,
-        "atc_button_padding_vertical": 14,
-        "atc_button_padding_horizontal": 32,
-        "atc_button_text_transform": "uppercase",
-        "overlay_padding": 20,
-        "show_atc_on_mobile": true,
-        "tagline": "Innovate. Cultivate. Grow.",
-        "tagline_color": "#006f2f",
-        "tagline_size": 21,
-        "mobile_tagline_size": 12,
-        "tagline_margin": 12,
-        "heading": "Dedicated to Excellence in Agriculture",
-        "heading_color": "#333333",
-        "heading_size": 36,
-        "mobile_heading_size": 28,
-        "heading_margin": 16,
-        "subheading": "Empowering farmers with innovative plant nutrition solutions. Our products enhance crop productivity and promote sustainable farming practices.",
-        "text_color": "#666666",
-        "text_size": 16,
-        "text_margin": 24,
-        "vision_title": "Our Vision:",
-        "vision_text": "Bhumi Agro aims to be a global leader in specialised, sustainable, & cost-effective agricultural inputs.",
-        "mission_title": "Mission:",
-        "mission_text": "To reduce production cost for small land holder, traditional farmer by providing all range of plant nutrient in best price by providing them necessary training and education about to improve their crop yield in every season.",
-        "section_title_color": "#006f2f",
-        "section_title_size": 21,
-        "section_title_margin": 8,
-        "section_spacing": 20,
-        "button_text": "Explore All Products",
-        "button_link": "",
-        "button_background": "#f4fcf8",
-        "button_text_color": "#333333",
-        "button_border_color": "#2d7a4f",
-        "button_hover_background": "#2d7a4f",
-        "button_hover_text_color": "#ffffff",
-        "button_hover_border_color": "#2d7a4f",
-        "button_border_width": 2,
-        "button_border_radius": 8,
-        "button_text_size": 16,
-        "button_padding_vertical": 12,
-        "button_padding_horizontal": 24,
-        "button_margin_top": 24
-      }
-    },
-    "custom_feature_blogs_Q7dgmr": {
-      "type": "custom-feature-blogs",
-      "name": "Featured Blogs",
-      "settings": {
-        "heading": "Featured Blogs",
-        "blog": "news",
-        "posts_to_show": 4,
-        "sort_order": "newest",
-        "button_text": "VIEW ALL BLOGS",
-        "button_bg_color": "#2d7a3e",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "featured_counter_bGXRHr": {
+    "jw_counter": {
       "type": "featured-counter",
-      "name": "Animated stats counter",
+      "name": "Stats Counter",
       "settings": {
-        "columns_desktop": 4,
-        "columns_tablet": 2,
-        "columns_mobile": "1",
-        "background_color": "#cfd8cc",
-        "padding_top": 40,
-        "padding_bottom": 40,
-        "counter_label_color": "#000000",
-        "counter_1_number": "201",
+        "background_color": "#1a1a1a",
+        "counter_label_color": "#a8998a",
+        "padding_top": 48,
+        "padding_bottom": 48,
+        "counter_1_number": "25000",
         "counter_1_plus": true,
-        "counter_1_label": "Happy Farmers",
-        "counter_1_number_color": "#2e8b57",
-        "counter_2_number": "250",
+        "counter_1_label": "Happy Customers",
+        "counter_1_number_color": "#b89b6a",
+        "counter_2_number": "500",
         "counter_2_plus": true,
-        "counter_2_label": "Best Products",
-        "counter_2_number_color": "#2e8b57",
-        "counter_3_number": "24000",
-        "counter_3_plus": true,
-        "counter_3_label": "Pincodes Delivery",
-        "counter_3_number_color": "#2e8b57",
+        "counter_2_label": "Unique Designs",
+        "counter_2_number_color": "#d4b896",
+        "counter_3_number": "15",
+        "counter_3_plus": false,
+        "counter_3_label": "Years of Craftsmanship",
+        "counter_3_number_color": "#b89b6a",
         "counter_4_number": "100",
         "counter_4_plus": false,
-        "counter_4_label": "Quality Assured",
-        "counter_4_number_color": "#2e8b57"
+        "counter_4_label": "Certified Quality",
+        "counter_4_number_color": "#d4b896"
       }
     },
-    "why_choose_us_hPP9XW": {
-      "type": "why-choose-us",
-      "name": "Video section",
+    "jw_gold": {
+      "type": "custom-best-selling",
+      "name": "Gold Jewellery",
       "settings": {
-        "video_duration": "",
-        "overlay_heading": "",
-        "overlay_subheading": "",
-        "below_heading": "Watch our story",
-        "below_description": "<p>Discover how we're making a difference in the world. Our journey is one of passion, dedication, and commitment to excellence.</p>",
-        "background_color": "#000000",
-        "heading_color": "#ffffff",
-        "paragraph_color": "#cccccc",
-        "border_radius": 16,
-        "padding_desktop": 80,
-        "padding_mobile": 50
+        "eyebrow": "Pure Gold",
+        "heading": "Gold Jewellery",
+        "collection": "gold-jewellery",
+        "bg_color": "#faf8f5",
+        "products_per_row_desktop": 4,
+        "products_per_row_mobile": "2",
+        "show_view_all": true,
+        "button_text": "Add to Bag"
       }
     },
-    "custom_review_carousel_8yfh4A": {
+  
+    "jw_reviews": {
       "type": "custom-review-carousel",
       "blocks": {
-        "review_item_nCM6EM": {
+        "r1": {
           "type": "review_item",
           "settings": {
-            "review_text": "For controlling thrips in Chilli I am continuously using Agro Mite in my crop from 5 yr from Bhumi agro and from control is amazing all my crops are Thrips Free by usage of Agro Mite",
-            "product": "sap-10",
-            "product_name": "",
-            "product_price": "",
-            "discount": "40%",
-            "customer_name": "Vaibhav Kumar",
-            "customer_location": "Indore"
-          }
-        },
-        "review_item_cmf7ry": {
-          "type": "review_item",
-          "settings": {
-            "review_text": "I am using Jet 100 and Mr boost continuously in my 70-acre plot of tomato from which I have got my yield double as Jet 100 helps in increasing in number of flowers in my crop and Mr Boot helps in the development of crop. I highly recommend to all vegetable growers!",
-            "product": "mr-nano",
-            "product_name": "",
-            "product_price": "",
-            "discount": "",
-            "customer_name": "Ankit Gupta",
-            "customer_location": "Pune"
-          }
-        },
-        "review_item_7XfGKz": {
-          "type": "review_item",
-          "settings": {
-            "review_text": "हमारी धान की फसल में हमने भूमि ग्रीन का इस्तेमाल किया था। पिछले साल जिसके कारण धान की हर एक फसल की गुणवत्ता एक नंबर आई और उसके कारण फसल की क्वालिटी बहुत बढ़ गई। धान के काले मोटे और वज़नदार हुए।",
-            "product": "bhumi-tridev",
-            "product_name": "",
-            "product_price": "",
-            "discount": "90%",
-            "product_image": "shopify://shop_images/image_19.png",
-            "customer_name": "vishal chouhan",
-            "customer_location": "indore"
-          }
-        },
-        "review_item_EXpEaF": {
-          "type": "review_item",
-          "settings": {
-            "review_text": "For controlling thrips in Chilli I am continuously using Agro Mite in my crop from 5 yr from Bhumi agro and from control is amazing all my crops are Thrips Free by usage of Agro Mite",
-            "product": "sap-10",
-            "product_name": "",
-            "product_price": "",
-            "discount": "40%",
-            "customer_name": "Durgesh kumar",
+            "review_text": "Absolutely stunning craftsmanship! The diamond necklace I ordered for our anniversary was breathtaking. Every detail was perfect and the packaging was so luxurious.",
+            "customer_name": "Priya Sharma",
             "customer_location": "Mumbai"
+          }
+        },
+        "r2": {
+          "type": "review_item",
+          "settings": {
+            "review_text": "The gold bangles are exactly as shown — hallmarked and beautifully crafted. I have been wearing them every day and they still look absolutely flawless.",
+            "customer_name": "Anjali Patel",
+            "customer_location": "Ahmedabad"
+          }
+        },
+        "r3": {
+          "type": "review_item",
+          "settings": {
+            "review_text": "Ordered a bridal set and was blown away by the quality. The packaging was luxurious and the jewellery itself exceeded every expectation.",
+            "customer_name": "Neha Verma",
+            "customer_location": "Delhi"
           }
         }
       },
-      "block_order": [
-        "review_item_nCM6EM",
-        "review_item_cmf7ry",
-        "review_item_7XfGKz",
-        "review_item_EXpEaF"
-      ],
-      "name": "Customer reviews carousel",
+      "block_order": ["r1","r2","r3"],
+      "name": "Customer Reviews",
       "settings": {
-        "heading": "Customer Reviews By Products",
-        "heading_size": 36,
-        "heading_color": "#000000",
-        "subheading": "Join thousands of farmers who trust us for their agricultural needs. With a focus on quality, innovation, and customer satisfaction, we are committed to helping you succeed.",
-        "subheading_size": 16,
-        "subheading_color": "#666666",
-        "desktop_width_percent": 100,
-        "background_color": "#f9f9f9",
-        "leaf_color": "#4caf50",
-        "card_background": "#f5f5f5",
-        "card_padding": 30,
-        "card_border_radius": 10,
-        "card_shadow": "0 2px 8px rgba(0, 0, 0, 0.1)",
-        "card_gap": 25,
-        "review_text_size": 21,
-        "review_text_color": "#000000",
-        "price_color": "#2d7a4f",
-        "discount_badge_bg": "#e74c3c",
-        "discount_badge_text": "#ffffff",
-        "location_color": "#888888",
-        "nav_button_bg": "#ffffff",
-        "nav_button_color": "#ffffff",
-        "nav_button_hover_bg": "#333333",
-        "autoplay": false,
-        "autoplay_speed": 5
+        "heading": "What Our Customers Say",
+        "subheading": "Thousands of happy customers trust us for their fine jewellery needs.",
+        "heading_color": "#1a1a1a",
+        "subheading_color": "#6a6258",
+        "background_color": "#faf8f5",
+        "card_background": "#ffffff"
       }
     }
   },
   "order": [
-    "custom_agri_slidder_UPBpVU",
-    "shop_by_catagory_MNBUwx",
-    "benefits_boxes_section_rkhDdR",
-    "section_8A7TGN",
-    "common_banner_for_section_N3YqmD",
-    "custom_best_selling_PTRNhe",
-    "promotional_banner_MUXcjH",
-    "watch_buy_section_qqkh6i",
-    "common_banner_for_section_9Nn3FH",
-    "custom_best_selling_cpUYCy",
-    "common_banner_for_section_afzb6L",
-    "custom_best_selling_GCTBmf",
-    "common_banner_for_section_azCz3f",
-    "custom_best_selling_wdbiW8",
-    "common_banner_for_section_zNWatq",
-    "custom_best_selling_fnEVzz",
-    "common_banner_for_section_VeeBfy",
-    "custom_best_selling_rbEtb4",
-    "custom_featured_product_WQpjk9",
-    "custom_feature_blogs_Q7dgmr",
-    "featured_counter_bGXRHr",
-    "why_choose_us_hPP9XW",
-    "custom_review_carousel_8yfh4A"
+    "jw_slider",
+    "jw_annbar",
+    "jw_benefits",
+    "jw_cats",
+    "jw_bestsell",
+    "jw_promobanner",
+    "jw_counter",
+    "jw_gold",
+    "jw_reviews"
   ]
 }
